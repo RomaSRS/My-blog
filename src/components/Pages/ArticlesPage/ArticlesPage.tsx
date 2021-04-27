@@ -1,16 +1,11 @@
 import React from 'react';
 
 import ArticleItem from '../../Block/ArticleItem';
-
+import Pagination from '../../Block/Pagination';
 import classes from './ArticlesPage.module.scss';
 
 const ArticlesPage = () => (
   <ul className={classes.articlesList}>
-    <li className={classes.article} />
-    <li className={classes.article} />
-    <li className={classes.article} />
-    <li className={classes.article} />
-    <li className={classes.article} />
     <ul>
       <li>
         <ArticleItem />
@@ -28,6 +23,7 @@ const ArticlesPage = () => (
         <ArticleItem />
       </li>
     </ul>
+    <Pagination postsPerPage={5} postsCount={20} />
   </ul>
 );
 

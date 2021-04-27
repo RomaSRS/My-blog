@@ -6,13 +6,13 @@ import Header from '../Header';
 import ArticlesPage from '../Pages/ArticlesPage';
 import FullArticlePage from '../Pages/FullArticlePage';
 
-const App = () => (
+const App: React.FC = () => (
   <BrowserRouter>
     <Header />
-    <div className={classes.container}>
+    <main className={classes.container}>
       <Route exact path={['/', '/articles']} component={ArticlesPage} />
       <Route path="/articles/test" component={FullArticlePage} />
-    </div>
+    </main>
   </BrowserRouter>
 );
 
