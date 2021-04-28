@@ -19,6 +19,7 @@ const Pagination: React.FC<IPaginationProps> = ({ postsPerPage = 1, postsCount =
       <a href="#" className={classes.pageItem}>
         {'<'}
       </a>
+
       {pageNumbers.map((number) => (
         <NavLink
           exact
@@ -33,6 +34,7 @@ const Pagination: React.FC<IPaginationProps> = ({ postsPerPage = 1, postsCount =
           <li>{number}</li>
         </NavLink>
       ))}
+
       <a href="#" className={classes.pageItem}>
         {'>'}
       </a>
