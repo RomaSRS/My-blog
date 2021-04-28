@@ -11,7 +11,8 @@ const App: React.FC = () => (
     <Header />
     <main className={classes.container}>
       <Route exact path={['/', '/articles']} component={ArticlesPage} />
-      <Route path="/articles/test" component={FullArticlePage} />
+      <Route exact path="/articles/:page" component={ArticlesPage} />
+      <Route path="/article/:slug" component={FullArticlePage} />
     </main>
   </BrowserRouter>
 );

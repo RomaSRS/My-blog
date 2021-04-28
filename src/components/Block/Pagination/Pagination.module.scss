@@ -10,21 +10,13 @@
     width: 22px;
     height: 22px;
     padding: 0 2px;
+    margin: 0 2px;
   }
 
   & a {
     text-decoration: none;
     font-size: 12px;
-    line-height: 40px;
     color: #222;
-  }
-
-  & a.isActive {
-    color: #fff;
-  }
-
-  & .isActive {
-    background-color: $primary-color;
     border-radius: 4px;
   }
 
