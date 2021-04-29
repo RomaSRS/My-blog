@@ -5,6 +5,7 @@ import classes from './App.module.scss';
 import Header from '../Header';
 import ArticlesPage from '../Pages/ArticlesPage';
 import FullArticlePage from '../Pages/FullArticlePage';
+import { SignUpForm, SignInForm } from '../Forms';
 
 const App: React.FC = () => (
   <BrowserRouter>
@@ -13,6 +14,8 @@ const App: React.FC = () => (
       <Route exact path={['/', '/articles']} component={ArticlesPage} />
       <Route exact path="/articles/:page" component={ArticlesPage} />
       <Route path="/article/:slug" component={FullArticlePage} />
+      <Route path="/sign-up" component={SignUpForm} />
+      <Route path="/sign-in" component={SignInForm} />
     </main>
   </BrowserRouter>
 );

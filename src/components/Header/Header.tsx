@@ -1,17 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import classes from './Header.module.scss';
 
 const Header: React.FC = () => (
   <header>
     <div className={classes.title}>
-      <h1>Blog</h1>
+      <h1>
+        <Link to="/">Realword Blog</Link>
+      </h1>
     </div>
-    <button type="button" className={classes.signIn}>
+    <Link to="/sign-in" className={classes.signIn}>
       Sign In
-    </button>
-    <button type="button" className={classes.signUp}>
+    </Link>
+    <Link to="/sign-up" className={classes.signUp}>
       Sign Up
-    </button>
+    </Link>
   </header>
 );
 

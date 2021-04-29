@@ -11,6 +11,20 @@ header {
   background-color: #ffffff;
   color: $heading-color;
   z-index: 1000;
+
+  & a {
+    text-decoration: none;
+  }
+
+  & a:visited {
+    color: inherit;
+  }
+  
+  & a.signUp {
+    color: $success-color;
+    border: 1px solid $success-color;
+    border-radius: 5px;
+  }
 }
 
 .title {
@@ -19,13 +33,8 @@ header {
 
 .signIn, .signUp {
   font-size: 18px;
-  padding: 0 20px;
+  padding: 11px 20px;
   border: none;
+  color: inherit;
   background-color: inherit;
-}
-
-.signUp {
-  color: $success-color;
-  border: 1px solid $success-color;
-  border-radius: 5px;
 }
