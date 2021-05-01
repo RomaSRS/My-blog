@@ -1,8 +1,8 @@
-import React, { SyntheticEvent } from 'react';
+import React, { SyntheticEvent, useCallback, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getFullArticle } from '../../../redux/actions';
-
+import formatDate from '../../../helpers/formatDate';
 import { IArticle } from '../../../helpers/types';
 
 import classes from './ArticleItem.module.scss';
@@ -15,11 +15,16 @@ const ArticleItem: React.FC<IArticleItem> = ({ data, children }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const getArticle = async (event: SyntheticEvent<HTMLAnchorElement>, slug: string) => {
-    event.preventDefault();
-    await dispatch(getFullArticle(slug));
-    history.push(`/article/${slug}`);
-  };
+  const createdAt = useMemo(() => formatDate(data.createdAt), [data]);
+
+  const getArticle = useCallback(
+    async (event: SyntheticEvent<HTMLAnchorElement>, slug: string) => {
+      event.preventDefault();
+      await dispatch(getFullArticle(slug));
+      history.push(`/article/${slug}`);
+    },
+    [dispatch, history],
+  );
 
   return (
     <>
@@ -34,14 +39,16 @@ const ArticleItem: React.FC<IArticleItem> = ({ data, children }) => {
               data.title
             )}
           </h2>
-          <div className={classes.likes}>{data.favoritesCount}</div>
+          <button type="button" className={classes.likes} disabled>
+            {data.favoritesCount}
+          </button>
           <ul className={classes.tags}>
             <li className={classes.tag}>Tag1</li>
           </ul>
         </div>
         <div className={classes.author}>
           <div className={classes.authorName}>{data.author.username}</div>
-          <div className={classes.date}>March 5, 2020</div>
+          <div className={classes.date}>{createdAt}</div>
         </div>
         <img
           className={classes.avatar}

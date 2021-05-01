@@ -19,6 +19,8 @@ const ArticlesPage: React.FC = () => {
 
   const { page }: any = useParams();
 
+  const articlesPerPage = articles ? articles.length : 1;
+
   useEffect(() => {
     dispatch(getArticles(page ? page * 10 : 0));
   }, [page, dispatch]);
@@ -26,8 +28,8 @@ const ArticlesPage: React.FC = () => {
   return (
     !isLoading && (
       <>
-        <ArticlesList articles={articles} />
-        <Pagination postsPerPage={articles.length} postsCount={articlesCount} />
+        <ArticlesList articles={articles || []} />
+        <Pagination articlesPerPage={articlesPerPage} articlesCount={articlesCount} />
       </>
     )
   );

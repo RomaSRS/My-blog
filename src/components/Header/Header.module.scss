@@ -5,7 +5,7 @@ header {
   height: 80px;
   display: flex;
   justify-content: space-between;
-  position: fixed;
+  position: sticky;
   top: 0;
   padding: 16px 45px;
   background-color: #ffffff;
@@ -20,11 +20,11 @@ header {
     color: inherit;
   }
   
-  & a.signUp {
-    color: $success-color;
-    border: 1px solid $success-color;
-    border-radius: 5px;
-  }
+  // & a.signUp {
+  //   color: $success-color;
+  //   border: 1px solid $success-color;
+  //   border-radius: 5px;
+  // }
 }
 
 .title {
@@ -37,4 +37,10 @@ header {
   border: none;
   color: inherit;
   background-color: inherit;
+
+  &:hover {
+    color: $success-color;
+    border: 1px solid $success-color;
+    border-radius: 5px;
+  }
 }
