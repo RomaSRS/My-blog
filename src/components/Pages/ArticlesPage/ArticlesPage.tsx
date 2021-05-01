@@ -4,13 +4,9 @@ import { useParams } from 'react-router-dom';
 
 import ArticlesList from '../../ArticlesList';
 import Pagination from '../../Block/Pagination';
-import { ILoadArticlesAction } from '../../../helpers/types';
+import { IArticleState } from '../../../helpers/types';
 import { getArticles } from '../../../redux/actions';
-// import classes from './ArticlesPage.module.scss';
-
-interface IArticleState {
-  articles: ILoadArticlesAction;
-}
+import './ArticlesPage.module.scss';
 
 const ArticlesPage: React.FC = () => {
   const { articles, articlesCount } = useSelector((state: IArticleState) => state.articles);
@@ -18,8 +14,6 @@ const ArticlesPage: React.FC = () => {
   const dispatch = useDispatch();
 
   const { page }: any = useParams();
-
-  const articlesPerPage = articles ? articles.length : 1;
 
   useEffect(() => {
     dispatch(getArticles(page ? page * 10 : 0));
@@ -29,7 +23,7 @@ const ArticlesPage: React.FC = () => {
     !isLoading && (
       <>
         <ArticlesList articles={articles || []} />
-        <Pagination articlesPerPage={articlesPerPage} articlesCount={articlesCount} />
+        <Pagination articlesPerPage={10} articlesCount={articlesCount} />
       </>
     )
   );
