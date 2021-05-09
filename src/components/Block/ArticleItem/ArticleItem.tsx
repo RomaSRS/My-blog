@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { getFullArticle } from '../../../redux/actions';
 import formatDate from '../../../helpers/formatDate';
 import { IArticle } from '../../../types/articles';
+import newId from '../../../helpers/newId';
 
 import classes from './ArticleItem.module.scss';
 
@@ -44,7 +45,7 @@ const ArticleItem: React.FC<IArticleItem> = ({ data, children }) => {
           </button>
           <ul className={classes.tags}>
             {data.tagList.map((tag) => (
-              <li className={classes.tag} key={Date.now()}>
+              <li className={classes.tag} key={newId('tag')}>
                 {tag}
               </li>
             ))}
