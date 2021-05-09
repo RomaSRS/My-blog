@@ -1,11 +1,11 @@
 import React, { SyntheticEvent, useCallback, useMemo } from 'react';
-import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getFullArticle } from '../../../redux/actions';
+import { useDispatch } from 'react-redux';
+import { getFullArticle } from '../../../redux/actions/articles';
 import formatDate from '../../../helpers/formatDate';
-import { IArticle } from '../../../types/articles';
 import newId from '../../../helpers/newId';
-
+import { IArticle } from '../../../types/articles';
+import defaultUserImage from '../../assets/defaultPic.jpg';
 import classes from './ArticleItem.module.scss';
 
 interface IArticleItem {
@@ -55,11 +55,7 @@ const ArticleItem: React.FC<IArticleItem> = ({ data, children }) => {
           <div className={classes.authorName}>{data.author.username}</div>
           <div className={classes.date}>{createdAt}</div>
         </div>
-        <img
-          className={classes.avatar}
-          src={data.author.image || 'https://pbs.twimg.com/media/EKjCpHhWwAEaE3W.jpg'}
-          alt=""
-        />
+        <img className={classes.avatar} src={data.author.image || defaultUserImage} alt="" />
         <p className={`${classes.text} ${children ? classes.fullArticle : ''}`}>{data.description}</p>
         {children}
       </div>
