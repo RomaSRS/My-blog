@@ -1,14 +1,9 @@
 import React from 'react';
 import ArticleItem from '../Block/ArticleItem';
-import { IArticle } from '../../helpers/types';
-
+import { IArticle, IArticles } from '../../types/articles';
 import './ArticlesList.module.scss';
 
-interface IArticlesListProps {
-  articles: IArticle[];
-}
-
-const ArticlesList: React.FC<IArticlesListProps> = ({ articles }) => (
+const ArticlesList: React.FC<IArticles> = ({ articles }) => (
   <>
     <ul>
       {articles.map((el: IArticle) => (

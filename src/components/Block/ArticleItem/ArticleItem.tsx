@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { getFullArticle } from '../../../redux/actions';
 import formatDate from '../../../helpers/formatDate';
-import { IArticle } from '../../../helpers/types';
+import { IArticle } from '../../../types/articles';
 
 import classes from './ArticleItem.module.scss';
 

@@ -1,17 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import classes from './App.module.scss';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Header from '../Header';
 import ErrorBoundary from '../ErrorBoundary';
 import ErrorIndicator from '../ErrorBoundary/ErrorIndicator';
 import ArticlesPage from '../Pages/ArticlesPage';
 import FullArticlePage from '../Pages/FullArticlePage';
 import { SignUpForm, SignInForm } from '../Forms';
-import { IArticleState } from '../../helpers/types';
+import classes from './App.module.scss';
 
 const App: React.FC = () => {
-  const isError = useSelector((state: IArticleState) => state.articles.isError);
+  const { isError } = useTypedSelector((state) => state.articles);
 
   return (
     <BrowserRouter>
