@@ -15,10 +15,6 @@ header {
   & a {
     text-decoration: none;
   }
-
-  & a:visited {
-    color: inherit;
-  }
 }
 
 .title {
@@ -55,6 +51,10 @@ header {
   height: 46px;
   margin-left: 13px;
   border-radius: 50%;
+}
+
+.username {
+  color: $heading-color;
 }
 
 .logOut {

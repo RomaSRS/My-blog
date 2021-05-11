@@ -90,6 +90,10 @@ $border-color: #D9D9D9;
     border-radius: 4px;
   }
 
+  &:focus {
+    outline: none;
+  }
+
   & .link {
     display: block;
     font-size: 12px;
@@ -107,10 +111,14 @@ $border-color: #D9D9D9;
   border-bottom: 1px solid #E8E8E8;
 }
 
-.error {
+.error, .success {
   display: block;
   margin: 2px 0 0 0;
   color: $highlight-color;
+}
+
+.success {
+  color: $success-color;
 }
 
 .loading {

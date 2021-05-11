@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import classes from './Header.module.scss';
 import defaultUserImage from '../assets/defaultPic.jpg';
-import { getCurrentUser, logOut } from '../../redux/actions/user';
+import { getProfile, logOut } from '../../redux/actions/user';
 
 const Header: React.FC = () => {
   const { user, isLogged } = useTypedSelector((state) => state.user);
@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   const history = useHistory();
 
   useEffect(() => {
-    dispatch(getCurrentUser());
+    dispatch(getProfile());
   }, [dispatch]);
 
   const logOutUser = (event: any) => {
