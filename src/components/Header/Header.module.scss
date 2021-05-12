@@ -11,28 +11,10 @@ header {
   background-color: #ffffff;
   color: $heading-color;
   z-index: 1000;
-
-  & a {
-    text-decoration: none;
-  }
 }
 
 .title {
   flex-grow: 1;
-}
-
-.signIn, .signUp {
-  font-size: 18px;
-  padding: 11px 20px;
-  border: none;
-  color: inherit;
-  background-color: inherit;
-
-  &:hover {
-    color: $success-color;
-    border: 1px solid $success-color;
-    border-radius: 5px;
-  }
 }
 
 .create {
@@ -46,6 +28,7 @@ header {
   align-items: center;
   padding: 0 27px;
 }
+
 .user img {
   width: 46px;
   height: 46px;
@@ -58,6 +41,10 @@ header {
 }
 
 .logOut {
+  font-size: 18px;
+  padding: 11px 20px;
+  color: inherit;
+  background-color: inherit;
   border: 1px solid $heading-color;
   border-radius: 5px;
 }
