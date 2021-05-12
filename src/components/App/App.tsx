@@ -6,7 +6,8 @@ import ErrorBoundary from '../ErrorBoundary';
 // import ErrorIndicator from '../ErrorBoundary/ErrorIndicator';
 import ArticlesPage from '../Pages/ArticlesPage';
 import FullArticlePage from '../Pages/FullArticlePage';
-import { SignUpForm, SignInForm, UpdateProfileForm } from '../Forms';
+import { SignUpForm, SignInForm, UpdateProfileForm, EditArticleForm } from '../Forms';
+import { Routes } from '../../helpers/constants';
 import classes from './App.module.scss';
 
 // eslint-disable-next-line arrow-body-style
@@ -19,12 +20,14 @@ const App: React.FC = () => {
       <main className={classes.container}>
         <ErrorBoundary>
           <Switch>
-            <Route exact path={['/', '/articles', '/articles/:page']} component={ArticlesPage} />
-            <Route path="/article/:slug" component={FullArticlePage} />
+            <Route exact path={[Routes.HOME, Routes.ARTICLES, Routes.ARTICLES_PAGE]} component={ArticlesPage} />
+            <Route path={Routes.ARTICLE} component={FullArticlePage} />
+            <Route path={Routes.EDIT_ARTICLE} component={FullArticlePage} />
+            <Route path={Routes.NEW_ARTICLE} component={EditArticleForm} />
 
-            <Route path="/sign-up" component={SignUpForm} />
-            <Route path="/sign-in" component={SignInForm} />
-            <Route path="/profile" component={UpdateProfileForm} />
+            <Route path={Routes.SIGN_UP} component={SignUpForm} />
+            <Route path={Routes.SIGN_IN} component={SignInForm} />
+            <Route path={Routes.PROFILE} component={UpdateProfileForm} />
           </Switch>
         </ErrorBoundary>
       </main>
