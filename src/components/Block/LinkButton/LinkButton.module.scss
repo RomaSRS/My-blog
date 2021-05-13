@@ -1,5 +1,9 @@
 @import '../../../helpers/_variables.scss';
 
+h1 a {
+  text-decoration: none;
+}
+
 a.linkButton {
   display: inline-block;
   font-size: 18px;
@@ -7,17 +11,13 @@ a.linkButton {
   border: none;
   border-radius: 5px;
   background-color: inherit;
+  text-decoration: none;
 
-  &.green {
+  &:hover {
     color: $success-color;
     border: 1px solid $success-color;
+    border-radius: 5px;
   }
-
-  // &:hover {
-  //   color: $success-color;
-  //   border: 1px solid $success-color;
-  //   border-radius: 5px;
-  // }
 
   &.red {
     color: $error-color;
