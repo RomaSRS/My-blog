@@ -84,7 +84,6 @@ const EditArticleForm: React.FC<{ edit?: boolean; slug: string }> = ({ edit, slu
         <legend>Tags</legend>
         <ul className={styles.tagList}>
           {tagsData.map((tag, index) => (
-            // TODO Почему-то любая функция здесь которая генерирует ключ, вызывает бесконечное обновление
             // eslint-disable-next-line react/no-array-index-key
             <li key={`tag_${index}`}>
               <Controller

@@ -28,13 +28,13 @@ const Header: React.FC = () => {
     <header>
       <div className={styles.title}>
         <h1>
-          <Link to="Routes.HOME">Realworld Blog</Link>
+          <Link to={Routes.HOME}>Realworld Blog</Link>
         </h1>
       </div>
 
       {isLogged ? (
         <>
-          <LinkButton to={Routes.NEW_ARTICLE} classname={['signUp', 'create']}>
+          <LinkButton to={Routes.NEW_ARTICLE} classname={['green', 'small']}>
             Create article
           </LinkButton>
           <Link to={Routes.PROFILE} className={styles.user}>

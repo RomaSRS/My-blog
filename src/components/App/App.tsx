@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import classes from './App.module.scss';
+import 'nprogress/nprogress.css';
 import Header from '../Header';
 import ErrorBoundary from '../ErrorBoundary';
 import PrivateRoute from '../PrivateRoute';
@@ -7,7 +9,6 @@ import ArticlesPage from '../Pages/ArticlesPage';
 import FullArticlePage from '../Pages/FullArticlePage';
 import { SignUpForm, SignInForm, UpdateProfileForm, EditArticleForm } from '../Forms';
 import { Routes } from '../../helpers/constants';
-import classes from './App.module.scss';
 
 const App: React.FC = () => (
   <BrowserRouter>
@@ -35,5 +36,4 @@ const App: React.FC = () => (
     </main>
   </BrowserRouter>
 );
-
 export default App;

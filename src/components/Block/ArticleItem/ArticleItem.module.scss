@@ -22,11 +22,9 @@
   display: inline-block;
   margin: 0 12px 2px 0;
   color: $primary-color;
-  text-decoration: none;
 }
 
 .header h2 a:hover {
-  text-decoration: underline;
   color: $hover-color;
 }
 
@@ -35,8 +33,17 @@
   align-items: center;
   position: relative;
   top: 1px;
-  background-color: inherit;
+  background: none;
   border: none;
+  
+  &:disabled {
+    background: none;
+    border: none;
+    cursor: initial;
+    &::before {
+      opacity: .5;
+    }
+  }
   
   &::before {
     content: '';
@@ -65,6 +72,8 @@
 .author {
   flex-grow: 1;
   justify-content: flex-end;
+  display: flex;
+  text-align: right;
 }
 
 .authorName {
@@ -75,6 +84,7 @@
 .date {
   display: block;
   color: $text-color-secondary;
+  font-size: 12px;
 }
 
 .avatar {
@@ -139,7 +149,6 @@ a.delete {
       margin: 2px 8px 0 0;
     }
   }
-  
   & a {
     float: right;
     padding: 4px 8px;
@@ -180,4 +189,4 @@ a.delete {
   .header h2, .header h2 a {
     margin-bottom: 0;
   }
-} 
+}

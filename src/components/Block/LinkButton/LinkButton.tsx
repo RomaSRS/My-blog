@@ -1,7 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-
 import styles from './LinkButton.module.scss';
 
 interface ILinkButtonProps {

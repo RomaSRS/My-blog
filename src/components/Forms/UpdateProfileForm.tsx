@@ -22,7 +22,6 @@ const UpdateProfileForm = () => {
     }
   }, [setValue, user]);
 
-  // TODO Другие варианты?
   const hasMounted = useRef(false);
 
   useEffect(() => {
