@@ -43,6 +43,10 @@ $border-color: #D9D9D9;
     }
   }
 
+  & input.inputError {
+    border: 1px solid $highlight-color;
+  }
+
   & .checkbox {
 
     & label {

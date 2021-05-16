@@ -22,7 +22,7 @@ const ArticlesPage: React.FC = () => {
     articles && (
       <>
         <ArticlesList articles={articles || []} />
-        <Pagination articlesPerPage={10} articlesCount={articlesCount} />
+        <Pagination articlesPerPage={10} articlesCount={articlesCount} page={page} />
       </>
     )
   );
