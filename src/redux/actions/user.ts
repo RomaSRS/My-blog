@@ -1,5 +1,6 @@
 import { IError, IForm, IUser, UserActionTypes, UserEndPoints } from '../../types/user';
 import { postFetch, getCurrentUser, updateResource } from '../../services';
+import { LocalStorage } from '../../helpers/constants';
 
 export const login = (user: IUser) => ({
   type: UserActionTypes.LOGIN,
@@ -24,7 +25,7 @@ export const loginUser = (body: IForm) => async (dispatch: Function) => {
   try {
     dispatch(sendingForm(true));
     const data = await postFetch(body, UserEndPoints.LOGIN);
-    localStorage.setItem('token', JSON.stringify(data.user.token));
+    localStorage.setItem(LocalStorage.TOKEN, JSON.stringify(data.user.token));
     dispatch(login(data));
   } catch (error) {
     dispatch(fetchArticlesError(error.response.data.errors));
@@ -37,7 +38,7 @@ export const registerUser = (body: IForm) => async (dispatch: Function) => {
   try {
     dispatch(sendingForm(true));
     const data = await postFetch(body, UserEndPoints.REGISTER);
-    localStorage.setItem('token', JSON.stringify(data.user.token));
+    localStorage.setItem(LocalStorage.TOKEN, JSON.stringify(data.user.token));
     dispatch(login(data));
   } catch (error) {
     dispatch(fetchArticlesError(error.response.data.errors));
@@ -47,7 +48,7 @@ export const registerUser = (body: IForm) => async (dispatch: Function) => {
 };
 
 export const getProfile = () => async (dispatch: Function) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem(LocalStorage.TOKEN);
   if (token) {
     const data = await getCurrentUser(token, UserEndPoints.UPDATE);
     dispatch(login(data));
@@ -57,8 +58,8 @@ export const getProfile = () => async (dispatch: Function) => {
 export const updateProfile = (body: IForm) => async (dispatch: Function) => {
   try {
     dispatch(sendingForm(true));
-    const token = localStorage.getItem('token');
-    const data = await updateResource(body, token, UserEndPoints.UPDATE);
+    const token = localStorage.getItem(LocalStorage.TOKEN);
+    const data = await updateResource(body, UserEndPoints.UPDATE, token);
     dispatch(login(data));
   } catch (error) {
     dispatch(fetchArticlesError(error.response.data.errors));

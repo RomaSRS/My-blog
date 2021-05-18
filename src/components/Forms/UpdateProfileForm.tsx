@@ -37,7 +37,7 @@ const UpdateProfileForm = () => {
     }
   }, [isFetching, serverError]);
 
-  const onSubmit = (data: IUpdateProfileForm) => {
+  const onSubmit = (data: IUpdateProfileForm): void => {
     const body = {
       user: {
         username: data.username,

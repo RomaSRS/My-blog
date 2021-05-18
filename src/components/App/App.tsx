@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import classes from './App.module.scss';
-import 'nprogress/nprogress.css';
+import '../assets/nprogress.scss';
 import Header from '../Header';
 import ErrorBoundary from '../ErrorBoundary';
 import PrivateRoute from '../PrivateRoute';

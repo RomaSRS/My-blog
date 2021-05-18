@@ -14,7 +14,7 @@ const SignInForm: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const onSubmit = (data: ISignInForm) => {
+  const onSubmit = (data: ISignInForm): void => {
     dispatch(
       loginUser({
         user: {

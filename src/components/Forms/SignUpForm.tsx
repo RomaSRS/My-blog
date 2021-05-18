@@ -14,7 +14,7 @@ const SignUpForm: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const onSubmit = (data: ISignUpForm) => {
+  const onSubmit = (data: ISignUpForm): void => {
     dispatch(
       registerUser({
         user: {
