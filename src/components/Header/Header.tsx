@@ -47,7 +47,9 @@ const Header: React.FC = () => {
         </>
       ) : (
         <>
-          <LinkButton to={Routes.SIGN_IN}>Sign In</LinkButton>
+          <LinkButton to={Routes.SIGN_IN} classname={['signIn']}>
+            Sign In
+          </LinkButton>
           <LinkButton to={Routes.SIGN_UP} classname={['green']}>
             Sign Up
           </LinkButton>
