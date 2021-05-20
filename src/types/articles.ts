@@ -16,17 +16,16 @@ interface IArticleAuthor {
 }
 
 export interface IArticles {
-  articles: IArticle[];
+  articles: IArticle[] | null;
   articlesCount?: number;
 }
 
-export interface IArticlesState {
-  articles: IArticle[] | null;
-  articlesCount: number;
+export interface IArticlesState extends IArticles {
   fullArticle: IArticle | null;
   isLoading: boolean;
   isError: boolean;
   isSuccess: boolean;
+  isLiking: boolean;
 }
 
 export enum ArticlesActions {
@@ -35,6 +34,7 @@ export enum ArticlesActions {
   FETCHING = 'FETCHING',
   FETCH_ERROR = 'FETCH_ERROR',
   SUCCESS_CREATE = 'SUCCESS_CREATE',
+  FETCH_LIKE = 'FETCH_LIKE',
 }
 
 interface ILoadArticlesAction {
@@ -61,9 +61,17 @@ interface ISuccessCreate {
   isSuccess: boolean;
 }
 
+interface IFetchLike {
+  type: ArticlesActions.FETCH_LIKE;
+  isLiking: boolean;
+  slug?: string;
+  isFull?: boolean;
+}
+
 export type IArticlesAction =
   | ILoadArticlesAction
   | ILoadFullArticleAction
   | IFetchingAction
   | IFetchErrorAction
-  | ISuccessCreate;
+  | ISuccessCreate
+  | IFetchLike;

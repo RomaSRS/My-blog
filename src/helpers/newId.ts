@@ -1,7 +1,15 @@
-let lastId = 0;
+const idCounter: { [prefix: string]: number } = {};
 
-export default function newId(prefix?: string): string {
+export default function uniqueId(prefix = 'id'): string {
+  if (!idCounter[prefix]) {
+    idCounter[prefix] = 0;
+  }
+
   // eslint-disable-next-line no-plusplus
-  lastId++;
-  return `${prefix || ''}${lastId}`;
+  const id = ++idCounter[prefix];
+  if (prefix === 'id') {
+    return `${id}`;
+  }
+
+  return `${prefix}${id}`;
 }
