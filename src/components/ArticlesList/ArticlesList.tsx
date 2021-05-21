@@ -1,6 +1,6 @@
 import React from 'react';
 import ArticleItem from '../Block/ArticleItem';
-import newId from '../../helpers/newId';
+import newId from '../../helpers/uniqueId';
 import { IArticle, IArticles } from '../../types/articles';
 import './ArticlesList.module.scss';
 

@@ -12,7 +12,7 @@ export const sendingForm = (isFetching: boolean) => ({
   isFetching,
 });
 
-export const fetchArticlesError = (error: IError) => ({
+export const fetchUserError = (error: IError) => ({
   type: UserActionTypes.FETCH_ERROR,
   error,
 });
@@ -28,7 +28,7 @@ export const loginUser = (body: IForm) => async (dispatch: Function) => {
     localStorage.setItem(LocalStorage.TOKEN, JSON.stringify(data.user.token));
     dispatch(login(data));
   } catch (error) {
-    dispatch(fetchArticlesError(error.response.data.errors));
+    dispatch(fetchUserError(error.response.data.errors));
   } finally {
     dispatch(sendingForm(false));
   }
@@ -41,7 +41,7 @@ export const registerUser = (body: IForm) => async (dispatch: Function) => {
     localStorage.setItem(LocalStorage.TOKEN, JSON.stringify(data.user.token));
     dispatch(login(data));
   } catch (error) {
-    dispatch(fetchArticlesError(error.response.data.errors));
+    dispatch(fetchUserError(error.response.data.errors));
   } finally {
     dispatch(sendingForm(false));
   }
@@ -50,7 +50,7 @@ export const registerUser = (body: IForm) => async (dispatch: Function) => {
 export const getProfile = () => async (dispatch: Function) => {
   const token = localStorage.getItem(LocalStorage.TOKEN);
   if (token) {
-    const data = await getCurrentUser(token, UserEndPoints.UPDATE);
+    const data = await getCurrentUser(UserEndPoints.UPDATE);
     dispatch(login(data));
   }
 };
@@ -58,11 +58,11 @@ export const getProfile = () => async (dispatch: Function) => {
 export const updateProfile = (body: IForm) => async (dispatch: Function) => {
   try {
     dispatch(sendingForm(true));
-    const token = localStorage.getItem(LocalStorage.TOKEN);
-    const data = await updateResource(body, UserEndPoints.UPDATE, token);
+    dispatch(fetchUserError(null));
+    const data = await updateResource(body, UserEndPoints.UPDATE);
     dispatch(login(data));
   } catch (error) {
-    dispatch(fetchArticlesError(error.response.data.errors));
+    dispatch(fetchUserError(error.response.data.errors));
   } finally {
     dispatch(sendingForm(false));
   }
