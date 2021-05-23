@@ -43,7 +43,7 @@ $border-color: #D9D9D9;
     }
   }
 
-  & input.inputError {
+  & input[aria-invalid='true'], input[aria-invalid='true']:focus {
     border: 1px solid $highlight-color;
   }
 
@@ -93,10 +93,15 @@ $border-color: #D9D9D9;
     color: #FFFFFF;
     border: none;
     border-radius: 4px;
-  }
 
-  &:focus {
-    outline: none;
+    &:focus {
+      outline: none;
+    }
+
+    &:disabled {
+      filter: opacity(.7);
+      cursor: default;
+    }
   }
 
   & .link {

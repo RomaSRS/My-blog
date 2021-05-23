@@ -6,6 +6,7 @@
   background: none;
   border: none;
   outline: none;
+  
   &:disabled {
     background: none;
     border: none;
@@ -15,6 +16,7 @@
   & span {
     margin-right: 5px;
   }
+  
   &:focus span svg, &.pulse span svg {
     animation: pulse 1s ease-in-out;
   }

@@ -27,7 +27,6 @@ const App: React.FC = () => (
             }}
           />
           <PrivateRoute exact path={Routes.NEW_ARTICLE} component={EditArticleForm} />
-
           <Route path={Routes.SIGN_UP} component={SignUpForm} />
           <Route path={Routes.SIGN_IN} component={SignInForm} />
           <Route path={Routes.PROFILE} component={UpdateProfileForm} />

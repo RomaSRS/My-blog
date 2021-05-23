@@ -1,20 +1,16 @@
 import React, { SyntheticEvent, useCallback, useMemo, useState } from 'react';
-
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
-
 import LinkButton from '../LinkButton';
 import ModalDelete from '../ModalDelete';
 import Like from '../Like';
 import { deleteArticle, getFullArticle, likeArticle } from '../../../redux/actions/articles';
 import formatDate from '../../../helpers/formatDate';
 import uniqueId from '../../../helpers/uniqueId';
-
 import { Routes } from '../../../helpers/constants';
 import styles from './ArticleItem.module.scss';
 import { IArticle } from '../../../types/articles';
-
 import defaultUserImage from '../../assets/defaultPic.jpg';
 
 interface IArticleItem {

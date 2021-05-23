@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-
 import classes from './Pagination.module.scss';
 
 interface IPaginationProps {
@@ -8,6 +7,11 @@ interface IPaginationProps {
   articlesCount: number;
   page: number;
 }
+
+const activeStyle = {
+  backgroundColor: '#1890FF',
+  color: '#fff',
+};
 
 const Pagination: React.FC<IPaginationProps> = ({ articlesPerPage, articlesCount, page = 1 }) => {
   const pageNumbers: number[] = [];
@@ -21,7 +25,7 @@ const Pagination: React.FC<IPaginationProps> = ({ articlesPerPage, articlesCount
   }
   return (
     <ul className={classes.pagination}>
-      <Link to={`/articles/${page > 5 ? +page - 5 : 0}`} className={classes.pageItem}>
+      <Link to={`/articles/${page > 5 ? +page - 5 : ''}`} className={classes.pageItem}>
         {'<<'}
       </Link>
 
@@ -31,10 +35,8 @@ const Pagination: React.FC<IPaginationProps> = ({ articlesPerPage, articlesCount
           to={`/articles/${number === 1 ? '' : number}`}
           key={number}
           className={classes.pageItem}
-          activeStyle={{
-            backgroundColor: '#1890FF',
-            color: '#fff',
-          }}
+          style={page === 1 && number === 1 ? activeStyle : {}}
+          activeStyle={activeStyle}
         >
           <li>{number}</li>
         </NavLink>

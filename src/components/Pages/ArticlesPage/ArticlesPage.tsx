@@ -8,20 +8,23 @@ import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import './ArticlesPage.module.scss';
 
 const ArticlesPage: React.FC = () => {
-  const { articles, articlesCount, isSuccess } = useTypedSelector((state) => state.articles);
+  const { articles, articlesCount, isLoading } = useTypedSelector((state) => state.articles);
   const dispatch = useDispatch();
 
   const { page }: any = useParams();
 
   useEffect(() => {
     dispatch(getArticles(page ? page * 10 : 0));
-  }, [dispatch, page, isSuccess]);
+  }, [dispatch, page]);
 
   return (
-    <>
-      <ArticlesList articles={articles || []} />
-      {articles && <Pagination articlesPerPage={10} articlesCount={articlesCount} page={page} />}
-    </>
+    !isLoading &&
+    articles && (
+      <>
+        <ArticlesList articles={articles || []} />
+        {articles && <Pagination articlesPerPage={10} articlesCount={articlesCount} page={page} />}
+      </>
+    )
   );
 };
 

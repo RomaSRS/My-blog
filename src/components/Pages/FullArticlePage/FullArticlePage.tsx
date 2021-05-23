@@ -10,7 +10,6 @@ import classes from './FullArticlePage.module.scss';
 const FullArticlePage: React.FC = () => {
   const { fullArticle, isLoading } = useTypedSelector((state) => state.articles);
   const dispatch = useDispatch();
-
   const { slug }: any = useParams();
 
   useEffect(() => {

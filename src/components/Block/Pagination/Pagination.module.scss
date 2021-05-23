@@ -22,11 +22,5 @@
 
   & li {
     line-height: 22px;
-
-    &:hover {
-      color: $hover-color;
-      border: 1px solid $hover-color;
-      border-radius: 5px;
-    }
   }
 }
