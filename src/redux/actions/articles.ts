@@ -34,14 +34,12 @@ export const fetchLike = (isLiking: boolean, slug?: string, isFull?: boolean) =>
   isFull,
 });
 
-export const getArticles =
-  (offset = 0) =>
-  async (dispatch: Function) => {
-    dispatch(fetchingArticles(true));
-    const data = await fetchData(`${Routes.ARTICLES}?offset=${offset}`).catch(() => dispatch(fetchArticlesError()));
-    dispatch(loadArticles(data));
-    dispatch(fetchingArticles(false));
-  };
+export const getArticles = (offset = 0) => async (dispatch: Function) => {
+  dispatch(fetchingArticles(true));
+  const data = await fetchData(`${Routes.ARTICLES}?offset=${offset}`).catch(() => dispatch(fetchArticlesError()));
+  dispatch(loadArticles(data));
+  dispatch(fetchingArticles(false));
+};
 
 export const getFullArticle = (slug: string) => async (dispatch: Function) => {
   dispatch(fetchingArticles(true));
@@ -58,6 +56,7 @@ export const createArticle = (body: IForm) => async (dispatch: Function) => {
   dispatch(successCreate(true));
 };
 
+// prettier-ignore
 export const updateArticle = (body: IForm, slug: string) => async (dispatch: Function) => {
   dispatch(fetchingArticles(true));
   const data = await updateResource(body, `${Routes.ARTICLES}/${slug}`).catch(() => dispatch(fetchArticlesError()));
@@ -73,18 +72,17 @@ export const deleteArticle = (slug: string) => async (dispatch: Function) => {
   dispatch(successCreate(true));
 };
 
-export const likeArticle =
-  (slug: string, liked: boolean, isFull = false) =>
-  async (dispatch: Function) => {
-    dispatch(fetchLike(true));
-    if (!liked) {
-      await postFetch({}, `${Routes.ARTICLES}/${slug}${Routes.FAVORITE}`)
-        .catch(() => dispatch(fetchArticlesError()))
-        .finally(dispatch(fetchLike(false, slug, isFull)));
-    }
-    if (liked) {
-      await deleteResource(`${Routes.ARTICLES}/${slug}${Routes.FAVORITE}`)
-        .catch(() => dispatch(fetchArticlesError()))
-        .finally(dispatch(fetchLike(false, slug, isFull)));
-    }
-  };
+// prettier-ignore
+export const likeArticle = (slug: string, liked: boolean, isFull = false) => async (dispatch: Function) => {
+  dispatch(fetchLike(true));
+  if (!liked) {
+    await postFetch({}, `${Routes.ARTICLES}/${slug}${Routes.FAVORITE}`)
+      .catch(() => dispatch(fetchArticlesError()))
+      .finally(dispatch(fetchLike(false, slug, isFull)));
+  }
+  if (liked) {
+    await deleteResource(`${Routes.ARTICLES}/${slug}${Routes.FAVORITE}`)
+      .catch(() => dispatch(fetchArticlesError()))
+      .finally(dispatch(fetchLike(false, slug, isFull)));
+  }
+};
