@@ -26,7 +26,7 @@ const Header: React.FC = () => {
     history.push(Routes.HOME);
   };
 
-  const { isOpen, setIsOpenBurger, wrapperRef } = useBurgerMenu();
+  const { isOpen, wrapperRef } = useBurgerMenu();
 
   return (
     <header ref={wrapperRef}>
@@ -35,19 +35,6 @@ const Header: React.FC = () => {
           <Link to={Routes.HOME}>Realworld Blog</Link>
         </h1>
       </div>
-
-      <button
-        type="button"
-        className={cn(styles.burger, isOpen ? styles.open : '')}
-        onClick={() => setIsOpenBurger(!isOpen)}
-      >
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-        <span />
-      </button>
 
       {isLogged ? (
         <div className={cn(styles.navMenu, isOpen ? styles.open : '')}>
