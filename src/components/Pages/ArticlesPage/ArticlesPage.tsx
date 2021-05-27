@@ -18,8 +18,7 @@ const ArticlesPage: React.FC = () => {
   }, [dispatch, page]);
 
   return (
-    !isLoading &&
-    articles && (
+    !isLoading && articles && (
       <>
         <ArticlesList articles={articles || []} />
         {articles && <Pagination articlesPerPage={10} articlesCount={articlesCount} page={page} />}

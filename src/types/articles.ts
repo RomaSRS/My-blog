@@ -1,6 +1,7 @@
 export interface IArticle {
   title: string;
   slug: string;
+  offset: string;
   body: string;
   tagList: string[];
   createdAt: string;
