@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useCallback, useMemo, useState } from 'react';
+import React, { SyntheticEvent, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
@@ -23,7 +23,7 @@ const ArticleItem: React.FC<IArticleItem> = ({ data, isFull, children }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const createdAt = useMemo(() => formatDate(data.createdAt), [data]);
+  const createdAt = formatDate(data.createdAt);
 
   const getArticleDetails = useCallback(
     (event: SyntheticEvent<HTMLAnchorElement>, slug: string) => {
