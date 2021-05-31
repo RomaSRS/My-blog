@@ -34,6 +34,11 @@ export const fetchLike = (isLiking: boolean, slug?: string, isFull?: boolean) =>
   isFull,
 });
 
+const dispatchActions = (dispatch: Function)=> {
+  dispatch(fetchingArticles(false));
+  dispatch(successCreate(true));
+};
+
 export const getArticles = (offset = 0) => async (dispatch: Function) => {
   dispatch(fetchingArticles(true));
   const data = await fetchData(`${Routes.ARTICLES}?offset=${offset}`).catch(() => dispatch(fetchArticlesError()));
@@ -52,8 +57,7 @@ export const createArticle = (body: IForm) => async (dispatch: Function) => {
   dispatch(fetchingArticles(true));
   const data = await postFetch(body, Routes.ARTICLES).catch(() => dispatch(fetchArticlesError()));
   dispatch(loadFullArticle(data.article));
-  dispatch(fetchingArticles(false));
-  dispatch(successCreate(true));
+  dispatch(dispatchActions);
 };
 
 // prettier-ignore
@@ -61,15 +65,13 @@ export const updateArticle = (body: IForm, slug: string) => async (dispatch: Fun
   dispatch(fetchingArticles(true));
   const data = await updateResource(body, `${Routes.ARTICLES}/${slug}`).catch(() => dispatch(fetchArticlesError()));
   dispatch(loadFullArticle(data.article));
-  dispatch(fetchingArticles(false));
-  dispatch(successCreate(true));
+  dispatch(dispatchActions);
 };
 
 export const deleteArticle = (slug: string) => async (dispatch: Function) => {
   dispatch(fetchingArticles(true));
   await deleteResource(`${Routes.ARTICLES}/${slug}`).catch(() => dispatch(fetchArticlesError()));
-  dispatch(fetchingArticles(false));
-  dispatch(successCreate(true));
+  dispatch(dispatchActions);
 };
 
 // prettier-ignore
