@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useCallback, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import LinkButton from '../LinkButton';
@@ -54,9 +54,9 @@ const ArticleItem: React.FC<IArticleItem> = ({ data, isFull, children }) => {
           <div>
             <h2>
               {!children ? (
-                <a href={`/article/${data.slug}`} onClick={(event) => getArticleDetails(event, data.slug)}>
+                <Link to={`/article/${data.slug}`} onClick={(event) => getArticleDetails(event, data.slug)}>
                   {data.title}
-                </a>
+                </Link>
               ) : (
                 data.title
               )}
