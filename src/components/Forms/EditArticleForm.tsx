@@ -63,7 +63,7 @@ const EditArticleForm: React.FC<{ edit?: boolean; slug: string }> = ({ edit, slu
 
   return (
     <form className={cn(styles.form, styles.editArticle)} onSubmit={handleSubmit(onSubmit)}>
-      <legend>{edit ? 'Edit' : 'Create new'} article</legend>
+      <h2>{edit ? 'Edit' : 'Create new'} article</h2>
 
       <label>
         Title
@@ -93,8 +93,9 @@ const EditArticleForm: React.FC<{ edit?: boolean; slug: string }> = ({ edit, slu
       <textarea className={styles.flexGrow} name="body" placeholder="Text" ref={register(validationRules.textarea)} />
       {errors.body && <span className={styles.error}>{errors.body.message}</span>}
 
-      <fieldset>
-        <legend>Tags</legend>
+      <h2>Tags</h2>
+
+      <form className={styles.fieldset}>
         <ul className={styles.tagList}>
           {tagsData.map((tag, index) => (
             // eslint-disable-next-line react/no-array-index-key
@@ -115,7 +116,7 @@ const EditArticleForm: React.FC<{ edit?: boolean; slug: string }> = ({ edit, slu
         <button className={styles.addButton} type="button" onClick={() => addTag()}>
           Add tag
         </button>
-      </fieldset>
+      </form>
 
       <button type="submit" disabled={!!isLoading}>
         {isLoading ? <span className={styles.loading} /> : 'Send'}
