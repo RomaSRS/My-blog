@@ -102,7 +102,7 @@ const SignUpForm: React.FC = () => {
         {errors.privacy && <span className={styles.error}>{errors.privacy.message}</span>}
       </div>
 
-      <button type="submit" disabled={!!isFetching || (!username && !email && !password && !privacy)}>
+      <button type="submit" disabled={!username && !email && !password && !privacy}>
         {isFetching ? <span className={styles.loading} /> : 'Create'}
       </button>
       <span className={styles.link}>
