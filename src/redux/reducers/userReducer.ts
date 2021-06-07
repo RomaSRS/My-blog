@@ -22,7 +22,7 @@ const userReducer = (state = defaultState, action: IUserAction): IUserState => {
         isFetching: action.isFetching,
       };
 
-    case UserActionTypes.FETCH_ERROR:
+    case UserActionTypes.FETCH_USER_ERROR:
       return {
         ...state,
         error: action.error,

@@ -41,10 +41,10 @@ const UpdateProfileForm = () => {
       user: {
         username: data.username,
         email: data.email.toLowerCase(),
-        password: data.password,
       } as IUpdateProfileForm,
     };
     if (data.image) body.user.image = data.image;
+    if (data.password) body.user.password = data.password;
 
     dispatch(updateProfile(body));
   };

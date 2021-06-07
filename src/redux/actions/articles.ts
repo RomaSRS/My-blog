@@ -34,7 +34,7 @@ export const fetchLike = (isLiking: boolean, slug?: string, isFull?: boolean) =>
   isFull,
 });
 
-const dispatchActions = (dispatch: Function)=> {
+const dispatchActions = (dispatch: Function) => {
   dispatch(fetchingArticles(false));
   dispatch(successCreate(true));
 };

@@ -1,6 +1,7 @@
 import { IError, IForm, IUser, UserActionTypes, UserEndPoints } from '../../types/user';
 import { postFetch, getCurrentUser, updateResource } from '../../services';
 import { LocalStorage } from '../../helpers/constants';
+import { getToken } from '../../helpers/storage';
 
 export const login = (user: IUser) => ({
   type: UserActionTypes.LOGIN,
@@ -13,7 +14,7 @@ export const sendingForm = (isFetching: boolean) => ({
 });
 
 export const fetchUserError = (error: IError) => ({
-  type: UserActionTypes.FETCH_ERROR,
+  type: UserActionTypes.FETCH_USER_ERROR,
   error,
 });
 
@@ -25,7 +26,7 @@ export const loginUser = (body: IForm) => async (dispatch: Function) => {
   try {
     dispatch(sendingForm(true));
     const data = await postFetch(body, UserEndPoints.LOGIN);
-    localStorage.setItem(LocalStorage.TOKEN, JSON.stringify(data.user.token));
+    getToken(LocalStorage, data);
     dispatch(login(data));
   } catch (error) {
     dispatch(fetchUserError(error.response.data.errors));
@@ -38,7 +39,7 @@ export const registerUser = (body: IForm) => async (dispatch: Function) => {
   try {
     dispatch(sendingForm(true));
     const data = await postFetch(body, UserEndPoints.REGISTER);
-    localStorage.setItem(LocalStorage.TOKEN, JSON.stringify(data.user.token));
+    getToken(LocalStorage, data);
     dispatch(login(data));
   } catch (error) {
     dispatch(fetchUserError(error.response.data.errors));

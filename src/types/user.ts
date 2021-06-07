@@ -54,7 +54,7 @@ export enum UserEndPoints {
 export enum UserActionTypes {
   LOGIN = 'LOGIN',
   FETCHING = 'FETCHING',
-  FETCH_ERROR = 'FETCH_ERROR',
+  FETCH_USER_ERROR = 'FETCH_USER_ERROR',
   LOG_OUT = 'LOG_OUT',
 }
 
@@ -69,7 +69,7 @@ interface IFetchingAction {
 }
 
 interface IFetchErrorAction {
-  type: UserActionTypes.FETCH_ERROR;
+  type: UserActionTypes.FETCH_USER_ERROR;
   error: IError;
 }
 

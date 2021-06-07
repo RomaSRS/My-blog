@@ -26,7 +26,6 @@ export const validationRules = {
     validate: {
       less: (value: string) => value.length > 2 || 'Username should be at least 3 characters',
       many: (value: string) => value.length < 19 || 'Too much characters. Needs to be less than 20.',
-      // exists: (value: string) => value = value || 'Such name already exists!',
     },
   },
   email: {
@@ -34,7 +33,6 @@ export const validationRules = {
     pattern: {
       value: EMAIL_VALIDATE_PATTERN,
       message: 'Invalid email address!',
-      // exists: 'Such name already exists!',
     },
   },
   password: {
